@@ -1,4 +1,6 @@
-# Composer Sync Check (Developer Documentation)
+# Composer Sync Check
+
+[![CI](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml/badge.svg)](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml)
 
 This repository contains the source code for the VS Code extension **Composer Sync Check**.
 

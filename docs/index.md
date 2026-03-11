@@ -2,6 +2,8 @@
 
 Composer Sync Check is a VS Code extension that detects potential Composer dependency drift and provides fast actions to resolve it.
 
+[![CI](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml/badge.svg)](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml)
+
 ## What it does
 
 - Runs dependency sync checks on startup.
