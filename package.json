@@ -1,0 +1,131 @@
+{
+  "name": "composer-sync-check",
+  "displayName": "Composer Sync Check",
+  "description": "Detects when Composer dependencies may be out of sync after Git branch changes or modifications to composer.json / composer.lock.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Manuel Gómez"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tupolev/composer-sync-check-vscode"
+  },
+  "homepage": "https://tupolev.github.io/composer-sync-check-vscode/",
+  "bugs": {
+    "url": "https://github.com/tupolev/composer-sync-check-vscode/issues"
+  },
+  "engines": {
+    "vscode": "^1.110.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "composer",
+    "php",
+    "dependencies",
+    "lockfile",
+    "git",
+    "productivity"
+  ],
+  "icon": "pluginicon.png",
+  "activationEvents": [
+    "workspaceContains:composer.json",
+    "onCommand:composerSyncCheck.runComposerInstall",
+    "onCommand:composerSyncCheck.testNotification"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "composerSyncCheck.runComposerInstall",
+        "title": "Composer Sync Check: Run Composer Install"
+      },
+      {
+        "command": "composerSyncCheck.showOutput",
+        "title": "Composer Sync Check: Show Output"
+      },
+      {
+        "command": "composerSyncCheck.forceCheck",
+        "title": "Composer Sync Check: Force Dependency Check"
+      },
+      {
+        "command": "composerSyncCheck.testNotification",
+        "title": "Composer Sync Check: Test Notification Balloon"
+      }
+    ],
+    "configuration": {
+      "title": "Composer Sync Check",
+      "properties": {
+        "composerSyncCheck.command": {
+          "type": "string",
+          "default": "composer install",
+          "description": "Command used to install Composer dependencies."
+        },
+        "composerSyncCheck.checkIntervalMinutes": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "description": "Interval in minutes for periodic dependency checks. Set to 0 to disable."
+        },
+        "composerSyncCheck.checkOnGitBranchChange": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check dependency sync when Git branch changes are detected."
+        },
+        "composerSyncCheck.checkOnComposerFilesChange": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check dependency sync when composer.json or composer.lock changes."
+        },
+        "composerSyncCheck.composerJsonPath": {
+          "type": "string",
+          "default": "composer.json",
+          "description": "Relative path to composer.json inside each workspace folder."
+        },
+        "composerSyncCheck.composerLockPath": {
+          "type": "string",
+          "default": "composer.lock",
+          "description": "Relative path to composer.lock inside each workspace folder."
+        },
+        "composerSyncCheck.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show warning notifications when dependencies may be out of sync."
+        },
+        "composerSyncCheck.debugMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable additional debug logging in the output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.110.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.27.3",
+    "eslint": "^9.39.3",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  }
+}

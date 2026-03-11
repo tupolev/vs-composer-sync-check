@@ -1,0 +1,6 @@
+{
+  "name": "tests/nested-composer",
+  "require": {
+    "php": "^8.2"
+  }
+}
