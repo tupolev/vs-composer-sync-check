@@ -2,7 +2,7 @@
   "name": "composer-sync-check",
   "displayName": "Composer Sync Check",
   "description": "Detects when Composer dependencies may be out of sync after Git branch changes or modifications to composer.json / composer.lock.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "kodesoft",
   "author": {
     "name": "kodesoft"

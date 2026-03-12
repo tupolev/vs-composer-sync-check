@@ -2,6 +2,10 @@
 
 All notable changes to the "Composer Sync Check" extension will be documented in this file.
 
+## [v0.2.0]
+
+- Changes in documentation and package definitions
+
 ## [v0.1.0] - Initial Release
 
 - Added Composer dependency sync detection using `composer.lock` and `vendor/composer/installed.json`.
