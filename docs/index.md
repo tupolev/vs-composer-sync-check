@@ -28,6 +28,10 @@ Clicking it opens:
 - `Run composer install`
 - `Check sync now`
 
+## Development
+
+- [Developer notes](./dev.md)
+
 ## Support
 
 - Report issues: <https://github.com/tupolev/vs-composer-sync-check/issues>

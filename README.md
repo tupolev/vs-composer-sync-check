@@ -1,83 +1,36 @@
 # Composer Sync Check
 
+Composer Sync Check is a VS Code extension that detects potential Composer dependency drift and provides fast actions to resolve it.
+
 [![CI](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml/badge.svg)](https://github.com/tupolev/vs-composer-sync-check/actions/workflows/ci.yml)
 
-This repository contains the source code for the VS Code extension **Composer Sync Check**.
+## What it does
 
-## Stack
+- Runs dependency sync checks on startup.
+- Re-checks on Git branch changes.
+- Re-checks when configured composer files change.
+- Runs periodic checks in the background.
+- Lets you run your configured Composer command from:
+  - status bar action menu
+  - warning notification quick action
+  - command palette
 
-- TypeScript
-- VS Code Extension API
-- esbuild
-- ESLint
+## Status bar behavior
 
-## Project Layout
+The extension keeps a status item in the bottom bar:
 
-- `src/extension.ts`
-  Entry point and orchestration (commands, status bar, checks, notifications).
-- `src/composer/ComposerDetector.ts`
-  Sync detection heuristics.
-- `src/composer/ComposerRunner.ts`
-  Executes configured Composer command.
-- `src/git/GitWatcher.ts`
-  Git branch change watcher.
-- `src/scheduler/Scheduler.ts`
-  Periodic scheduler.
-- `src/output/Output.ts`
-  Output channel wrapper.
-- `src/test/`
-  Extension and detector tests.
-- `docs/`
-  End-user documentation (installation/configuration/usage).
+- `Composer sync OK`
+- `Composer sync needed`
+- `Composer sync running`
 
-## Local Development
+Clicking it opens:
 
-Install dependencies:
+- `Run composer install`
+- `Check sync now`
 
-```bash
-npm install
-```
+## Development
 
-Build:
-
-```bash
-npm run compile
-```
-
-Run Extension Development Host:
-
-1. Open this repo in VS Code.
-2. Press `F5`.
-
-## Quality Checks
-
-```bash
-npm run check-types
-npm run lint
-npm run compile
-```
-
-## Packaging
-
-```bash
-npm run package
-npx @vscode/vsce package
-```
-
-## Current Behavior Notes
-
-- Multi-root workspaces are supported.
-- Composer file paths are configurable per workspace folder via:
-  - `composerSyncCheck.composerJsonPath`
-  - `composerSyncCheck.composerLockPath`
-- Status bar uses text states:
-  - `Composer sync OK`
-  - `Composer sync needed`
-  - `Composer sync running`
-- Status bar click opens actions:
-  - Run composer install
-  - Check sync now
-
+- [Developer notes](./dev.md)
 
 ## Support
 
